@@ -91,7 +91,7 @@ def print_commit_info(commit, commit_name):
 def check_mode(source_commit, source_str, target_repo, target_str):
     print_commit_info(source_commit, source_str)
     print_commit_info(target_repo.head.commit, f"\n{target_str}")
-    print_commit_comp(source_commit.committed_datetime, target_repo.head.commit.committed_datetime)
+    print_commit_comp(source_commit, target_repo.head.commit, target_str)
     exit()
 
 def print_commit_comp(source_commit, target_commit, target_str, warn=True):
