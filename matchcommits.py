@@ -145,7 +145,7 @@ def find_closest_commits(repo, target_commit, branch):
         prn(f"[{count:06d}] Next commit: {next_commit.hexsha[:8]} at {next_commit.committed_datetime.isoformat()}", verbosity=2)
         while len(stack) and next_commit.committed_datetime > stack[0].committed_datetime:
             timestr = time_diff_string(time_diff(next_commit.committed_datetime, stack[0].committed_datetime))
-            prn(f"Commit is newer than parent ({next_commit.hexsha[:8]}) by {timestr}. Classifying parent as out-of-order.", verbosity=2)
+            prn(f"Commit is older than parent ({next_commit.hexsha[:8]}) by {timestr}. Classifying parent as out-of-order.", verbosity=2)
             ooo_commits.append(stack.pop())
         if next_commit.committed_datetime < target_commit_datetime and count < 0:
             prn(f"Commit date before target, starting countdown.", verbosity=2)
